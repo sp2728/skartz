@@ -1,0 +1,32 @@
+.logo{
+    color:white;
+    font-family: cursive;
+    font-weight: bold;
+}
+
+.logo::before{
+    content: '| ';
+}
+
+.logo::after{
+    content: ' |';
+}
+
+.nav-link{
+    border-radius: 5px;
+    color: white;
+}
+
+.vertical-line{
+    display: inline-block;
+    border-left: 1px solid #ccc;
+    height: 55px;
+}
+
+.user:hover{
+    background-color: rgba(8, 34, 51, 0.9);;
+}
+
+.navbar-toggler-icon{
+color: ivory;
+}

@@ -1,0 +1,34 @@
+.wrapper{
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link{
+    color: white;
+}
+
+.btn-group::before{
+    content: 'Status: ';
+    font-weight: bold;
+    padding: 10px;
+}
+
+.date::before{
+    content: 'Date: ';
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+td, th{
+    padding: 20px;
+}
+
+#todo{
+    width: 40%;
+} 
+
+.mainContent{
+    overflow: scroll;
+}
