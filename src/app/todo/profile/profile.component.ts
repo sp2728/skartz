@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
   user:any;
   choosen:any;
   image:any;
+  video:any;
   submitted=false;
   constructor(private dataService:DataService) { }
 
@@ -40,6 +41,30 @@ export class ProfileComponent implements OnInit {
       this.dataService.updateProfileImage(fd).subscribe((res)=>{
         if(res['success']){
           this.submitted=false;
+          this.getProfile();
+        }
+      });
+    }
+  }
+
+  fileChoosenVideo(event:any){
+    if(event.target.value){
+      this.video = <File>event.target.files[0];
+      this.choosen= true;
+    }
+  }
+
+  submitVideo(){
+    console.log(this.video)
+    let fd = new FormData();
+    this.submitted= true;
+    if(this.video){
+      fd.append('profileVideo', this.video, this.video.name);
+      this.dataService.updateProfileVideo(fd).subscribe((res)=>{
+        if(res['success']){
+          this.submitted=false;
+          console.log('final')
+
           this.getProfile();
         }
       });

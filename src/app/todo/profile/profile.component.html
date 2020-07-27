@@ -37,6 +37,32 @@
           <button class="btn btn-danger" (click)="deletePhoto()">Delete Image</button>
         </span>
       </div>
+
+      <div class="row p-3" *ngIf="!user.profileVideo && !submitted">
+        <span class="col-6 font-weight-bold"> Video: </span>
+        <span class="col"> <input type="file" (input)="fileChoosenVideo($event)"></span>
+        <span class="col" *ngIf="choosen"> 
+          <button class="btn btn-warning" (click)="submitVideo()">Submit</button>
+        </span>
+      </div>
+
+      <div class="row p-3" *ngIf="!user.profileVideo && submitted">
+        <span class="col-6 font-weight-bold"> Video: </span>
+        <div class="col">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      </div>
+
+      <div class="row p-3" *ngIf="user.profileVideo">
+        <span class="col-6 font-weight-bold"> Image: </span>
+        <span class="col-lg"><video width="320" height="240" controls><source src="{{user.profileVideo}}" type="video/mp4"></video></span>
+        <span class="col-lg">
+          <button class="btn btn-danger" (click)="deleteVideo()">Delete Image</button>
+        </span>
+      </div>
+
     </div>
   </div>
 </div>

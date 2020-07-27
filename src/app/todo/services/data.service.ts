@@ -29,6 +29,10 @@ export class DataService {
     return this.http.post('profile/'+ this.localStorageService.getUser()+'/uploadPhoto', image)
   }
 
+  updateProfileVideo(image:any){
+    return this.http.post('profile/'+ this.localStorageService.getUser()+'/uploadVideo', image)
+  }
+
   deleteProfileImage(){
     return this.http.get('profile/'+ this.localStorageService.getUser()+'/deletePhoto');
   }
