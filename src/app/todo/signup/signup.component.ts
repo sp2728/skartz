@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   confirmPasswordError= false;
   confirmPasswordErrorValue:any;
   agreementError = false;
+  isVerification:any;
 
   constructor(private fb: FormBuilder, private dataService:DataService, private router:Router) { }
 
@@ -25,6 +26,7 @@ export class SignupComponent implements OnInit {
     this.createForm();
     this.submitted=false;
     this.loading=false;
+    this.isVerification=false;
   }
 
   createForm() {
@@ -54,7 +56,7 @@ export class SignupComponent implements OnInit {
 
   onSubmit(){
     this.submitted=true;
-
+    this.error=""
     //Agreement confirmation
     this.agreementError=false;
     let agreement  = (document.getElementById('agreement') as HTMLInputElement).checked
@@ -70,23 +72,44 @@ export class SignupComponent implements OnInit {
     //Submitting the form
     if(this.signupForm.valid && passwordCheck && agreement){
       this.loading =true;
-        this.dataService.postSignup(this.signupData).subscribe((res)=>{
+        this.dataService.verifyEmail(this.signupData).subscribe((res)=>{
           if(res['success']){
-            this.router.navigate(['/']);
+            this.isVerification=true;
+            this.loading=false;
           }
           else{
-            if(res['err']['name']==='UserExistsError'){
-              this.error="Username already exists";
-            }
-            else{
-              this.error="Invalid Registration";
-            }
-            this.loading = false;
-            this.signupForm.reset()
+            this.loading=false;
+            this.error = 'Username already exists';
           }
+
         })  
     }
     //end
+  }
+
+  submit(code:any){
+    this.signupData['code']=code;
+    this.error=""
+    this.loading=true;
+    this.dataService.postSignup(this.signupData).subscribe((res)=>{
+          if(res['success']){
+            this.loading=false;
+            this.router.navigate(['/']);
+          }
+          else{
+            // if(res['err']['name']==='UserExistsError'){
+            //   this.error="Username already exists";
+            // }
+            // else{
+            //   this.error="Invalid Registration";
+            // }
+            // this.loading = false;
+            // this.signupForm.reset()
+            this.loading=false;
+            this.error = res['status'];
+          }
+    })
+
   }
 
 }

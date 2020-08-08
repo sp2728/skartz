@@ -17,7 +17,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.localStorageService.getUser();
-    this.getProfile();
+    this.getProfile()
+
+  }
+
+  toggleNav(){
+    document.querySelector('.nav-links').classList.toggle('nav-active');
+    document.querySelector('.bars').classList.toggle('toggleBars');
   }
 
   getProfile(){

@@ -6,7 +6,9 @@
       </h4>
   
       <div class="card-body" *ngIf="!loading">
+        <div *ngIf="!isVerification">
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <span class="text-danger form-control border-0 text-center" *ngIf="error">{{error}}</span>
           <span class="text-danger form-control border-0 text-center" *ngIf="error && (signupForm.get('username').hasError('required') && signupForm.get('email').hasError('required') && signupForm.get('password').hasError('required'))">{{error}}</span>
           <div class="form-group">
             <input class="form-control" type="text" placeholder="Username" value="" formControlName="username">
@@ -36,9 +38,21 @@
           </div>
         </form>
   
-        <div class="form-group">
+        <div class="form-group text-center">
           <span class="form-control"> Have an account ? <a routerLink="/login">Login</a></span>
         </div>
+      </div>
+
+      <div *ngIf="isVerification">
+        <span class="text-danger form-control border-0 text-center" *ngIf="error">{{error}}</span>
+        <div class="form-group">
+          <input type="text" class="form-control" #codeInput placeholder="Enter Code">
+        </div>
+        <div class="form-group text-center">
+          <a class="btn btn-warning" (click)="submit(codeInput.value)">Submit</a>
+        </div>
+      </div>
+
       </div>
   
       <div class="card-body text-center" *ngIf="loading">

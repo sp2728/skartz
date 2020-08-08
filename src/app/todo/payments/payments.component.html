@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="container pt-5">
+    <form class="mb-5" novalidate (ngSubmit)="buy()" [formGroup]="stripeForm">
+      <h3 class="pb-5">Please do the Strpe payment !!</h3>
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="name" placeholder="Full Name*" required>
+            <span class="text-danger" *ngIf="stripeForm.get('name').hasError('required') && submitted"> Full Name is
+                required</span>
+        </div>
+        <div class="form-group">
+            <input type="number" class="form-control" formControlName="amount" placeholder="Amount*" required>
+            <span class="text-danger" *ngIf="stripeForm.get('amount').hasError('required') && submitted"> Amount is
+                required</span>
+        </div>
+        <div class="form-group border p-2">
+            <div id="card-element" class="field"></div>
+        </div>
+        <button class="btn btn-warning border shadow" type="submit" data-toggle="modal" data-target="#exampleModalCenter">
+          BUY
+        </button>
+      </form>
+</div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div class="spinner-border" role="status" *ngIf="loading">
+                <span class="sr-only">Loading...</span>
+              </div>
+              <div class="text-center" *ngIf="!loading">
+                  <p class="text-success">{{paymentStatus}}</p>
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>

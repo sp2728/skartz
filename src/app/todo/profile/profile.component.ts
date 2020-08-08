@@ -77,5 +77,9 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-
+  deleteVideo(){
+    this.dataService.deleteProfileImage().subscribe((res)=>{
+      if(res['success']){this.getProfile();}
+    })
+  }
 }

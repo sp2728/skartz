@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   error: any;
   loading: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private localStorageService: LocalStorageService, private dataService:DataService) { }
+  constructor(private fb: FormBuilder, private router: Router, private localStorageService: LocalStorageService, private dataService: DataService) { }
 
   ngOnInit() {
     this.createForm();

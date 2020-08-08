@@ -1,27 +1,34 @@
-<nav class="navbar navbar-expand-lg shadow sticky-top">
-    <a class="navbar-brand logo p-2" routerLink="/">BhinJ</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
-      <span class="fa fa-bars fa-lg text-white"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <ul class="navbar-nav ml-auto">
-        <span class="vertical-line d-none d-lg-block"  *ngIf="username"></span>
-        <li class="nav-item dropdown" *ngIf="username">
-          <a class="nav-link user" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-           <img class="rounded-circle" src={{user.profileImage}} *ngIf="user" height="40" width="40">
-           <span *ngIf="username"> {{username}}</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right shadow">
-            <a class="dropdown-item" routerLink="/profile" *ngIf="user">Profile</a>
-            <a class="dropdown-item" (click)="logout()" *ngIf="user">Logout</a>
-          </div>
-        </li>
-        <li class="nav-item mr-3" *ngIf="!username">
-          <a class="nav-link border" routerLink="/login" >Login</a>
-        </li>
-        <li class="nav-item" *ngIf="!username">
-          <a class="nav-link border" routerLink="/signup">Signup</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav class="d-flex sticky-top">
+  <div class="navbar-brand pl-3">
+    <a class="logo" routerLink="/">BhinJ</a>
+  </div>
+
+  <a class="bars" (click)="toggleNav()">
+    <div class="line1"></div>
+    <div class="line2"></div>
+    <div class="line3"></div>
+  </a>
+
+  <ul class="nav-links closeNav">
+    <li class="nav-item"><a class="nav-link" type="button" routerLink="/">Home</a></li>
+    <li class="nav-item"><a class="nav-link" type="button" routerLink="/designs">Designs</a></li>
+    <li class="nav-item" *ngIf="username"><a class="nav-link" type="button" routerLink="/payments">Payments</a></li>
+    <li class="nav-item"><a class="nav-link" type="button" routerLink="/contact">Contact</a></li>
+    <li class="nav-item" *ngIf="!username"><a class="nav-link" type="button" routerLink="/login">Login</a></li>
+    <li class="nav-item" *ngIf="!username"><a class="nav-link" type="button" routerLink="/signup">Singup</a></li>
+    <li class="nav-item" *ngIf="username">
+      <a class="nav-link user dropdown dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+        <img class="rounded-circle mr-2" src={{user.profileImage}} *ngIf="user.profileImage" height="40" width="40">
+        <img class="rounded-circle bg-white p-2 mr-2" src='/assets/user.png' *ngIf="!user.profileImage" height="40"
+          width="40">
+        <span *ngIf="username"> {{username}}</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow">
+        <a class="dropdown-item text-dark" routerLink="/profile" *ngIf="user">Profile</a>
+        <a class="dropdown-item text-dark" (click)="logout()" *ngIf="user">Logout</a>
+      </div>
+    </li>
+  </ul>
+
+
+</nav>

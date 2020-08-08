@@ -1,29 +1,28 @@
-<app-header></app-header>
+<div class="wrapper">
+  <div class="container">
 
-<div class="wrapper d-flex justify-content-center align-items-center p-5">
-
-  <div class="card w-100">
+  <div class="card">
     <div class="card-header h5"> Profile Details </div>
     <div class="card-body" *ngIf=user>
 
       <div class="row p-3">
-        <span class="col font-weight-bold"> Username: </span><span class="col">{{user.username}}</span>
+        <span class="col-lg font-weight-bold"> Username: </span><span class="col-lg">{{user.username}}</span>
       </div>
       <div class="row p-3">
-        <span class="col font-weight-bold"> Email Id: </span><span class="col">{{user.email}}</span>
+        <span class="col-lg font-weight-bold"> Email Id: </span><span class="col-lg">{{user.email}}</span>
       </div>
 
       <div class="row p-3" *ngIf="!user.profileImage && !submitted">
         <span class="col-6 font-weight-bold"> Image: </span>
-        <span class="col"> <input type="file" (input)="fileChoosen($event)"></span>
-        <span class="col" *ngIf="choosen"> 
+        <span class="col-lg"> <input type="file" (input)="fileChoosen($event)"></span>
+        <span class="col-lg" *ngIf="choosen"> 
           <button class="btn btn-warning" (click)="submitPhoto()">Submit</button>
         </span>
       </div>
 
       <div class="row p-3" *ngIf="!user.profileImage && submitted">
         <span class="col-6 font-weight-bold"> Image: </span>
-        <div class="col">
+        <div class="col-lg">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -40,15 +39,15 @@
 
       <div class="row p-3" *ngIf="!user.profileVideo && !submitted">
         <span class="col-6 font-weight-bold"> Video: </span>
-        <span class="col"> <input type="file" (input)="fileChoosenVideo($event)"></span>
-        <span class="col" *ngIf="choosen"> 
+        <span class="col-lg"> <input type="file" (input)="fileChoosenVideo($event)"></span>
+        <span class="col-lg" *ngIf="choosen"> 
           <button class="btn btn-warning" (click)="submitVideo()">Submit</button>
         </span>
       </div>
 
       <div class="row p-3" *ngIf="!user.profileVideo && submitted">
         <span class="col-6 font-weight-bold"> Video: </span>
-        <div class="col">
+        <div class="col-lg">
         <div class="spinner-border" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -59,10 +58,11 @@
         <span class="col-6 font-weight-bold"> Image: </span>
         <span class="col-lg"><video width="320" height="240" controls><source src="{{user.profileVideo}}" type="video/mp4"></video></span>
         <span class="col-lg">
-          <button class="btn btn-danger" (click)="deleteVideo()">Delete Image</button>
+          <button class="btn btn-danger" (click)="deleteVideo()">Delete Video</button>
         </span>
       </div>
 
     </div>
   </div>
+</div>
 </div>

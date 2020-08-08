@@ -1,0 +1,46 @@
+.card{
+    overflow: scroll;
+}
+
+/*Timeline tabs start*/
+.timeline{
+    display: block;
+    content: '';
+    background: rgba(19, 59, 85, 0.9);
+    height: 5px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.content{
+    background-color:rgba(19, 59, 85, 0.9);
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+    transition: ease-in-out;
+}
+
+.content:after{
+    display: flex;
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: rgba(19, 59, 85);
+    border: 3px solid saddlebrown;
+    z-index: 10;
+    border-radius: 50%;
+    margin-top: 10px;
+    left: 20px;
+}
+
+.content:hover, .content:hover:after{
+    background-color: rgb(202, 105, 95);
+}
+
+.contentActive, .contentActive:after{
+    background-color: rgb(202, 105, 95);
+}
+/*Timeline tabs end*/
