@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-designs',
@@ -15,7 +16,7 @@ export class DesignsComponent implements OnInit {
   isPrevious:any;
   isNext:any;
 
-  constructor() { }
+  constructor(private navbarService:NavbarService) { }
 
   ngOnInit() {
     this.tog=false;
@@ -25,6 +26,7 @@ export class DesignsComponent implements OnInit {
     this.profileClass= document.querySelector('#profileContent');
     this.loginClass= document.querySelector('#loginContent');
     this.signupClass= document.querySelector('#signupContent');
+    this.navbarService.show();
   }
 
   prev(){

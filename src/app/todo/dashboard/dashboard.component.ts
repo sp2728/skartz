@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LocalStorageService } from '../services/local-storage.service';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,7 @@ export class DashboardComponent implements OnInit {
   error: any;
   num:any;
 
-  constructor(private fb: FormBuilder, private localStorageService: LocalStorageService, private dataService: DataService, private router: Router) { }
+  constructor(private fb: FormBuilder, private navbarService:NavbarService, private localStorageService: LocalStorageService, private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
     this.getTodos();
@@ -30,6 +31,7 @@ export class DashboardComponent implements OnInit {
     this.num=1;
     this.date = new Date().toLocaleDateString('en-CA');
     this.submitted = false;
+    this.navbarService.show();
   }
 
   createForm() {

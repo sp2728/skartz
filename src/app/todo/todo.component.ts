@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { LoginComponent } from './login/login.component';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { NavbarService } from './services/navbar.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,11 +8,19 @@ import { LoginComponent } from './login/login.component';
 })
 export class TodoComponent implements OnInit {
 
+
   isNav:any;
-  
-  constructor() { }
+  constructor(private navbarService:NavbarService, private cdRef:ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.navbarService.isNav.subscribe((value)=>{
+      console.log(value);
+      this.isNav= value;
+    });
+  }
+
+  ngAfterViewChecked(){
+    this.cdRef.detectChanges();
   }
 
 }

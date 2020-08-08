@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-contact',
@@ -16,11 +17,12 @@ export class ContactComponent implements OnInit {
   submitted: any;
   loading: any;
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private router: Router) { }
+  constructor(private fb: FormBuilder, private dataService: DataService, private navbarService:NavbarService, private router: Router) { }
 
   ngOnInit() {
     this.createForm();
     this.loading = false;
+    this.navbarService.show();
   }
 
   createForm() {

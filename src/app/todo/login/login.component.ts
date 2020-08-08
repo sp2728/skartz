@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage.service';
 import { DataService } from '../services/data.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +18,13 @@ export class LoginComponent implements OnInit {
   error: any;
   loading: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private localStorageService: LocalStorageService, private dataService: DataService) { }
+  constructor(private fb: FormBuilder, private router: Router,private navbarService:NavbarService, private localStorageService: LocalStorageService, private dataService: DataService) { }
 
   ngOnInit() {
     this.createForm();
     this.submitted = false;
     this.loading = false;
+    this.navbarService.hide();
   }
 
   createForm() {

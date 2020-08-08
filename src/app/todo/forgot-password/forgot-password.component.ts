@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,10 +16,11 @@ export class ForgotPasswordComponent implements OnInit {
   submitted:any;
   error:any;
 
-  constructor(private fb: FormBuilder, private dataService:DataService, private router:Router) { }
+  constructor(private fb: FormBuilder,private navbarService:NavbarService, private dataService:DataService, private router:Router) { }
 
   ngOnInit() {
     this.createForm();
+    this.navbarService.hide();
   }
 
   createForm() {

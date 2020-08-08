@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,13 +21,14 @@ export class SignupComponent implements OnInit {
   agreementError = false;
   isVerification:any;
 
-  constructor(private fb: FormBuilder, private dataService:DataService, private router:Router) { }
+  constructor(private fb: FormBuilder,private navbarService:NavbarService, private dataService:DataService, private router:Router) { }
 
   ngOnInit() {
     this.createForm();
     this.submitted=false;
     this.loading=false;
     this.isVerification=false;
+    this.navbarService.hide();
   }
 
   createForm() {

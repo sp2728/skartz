@@ -28,7 +28,7 @@ const routes:Routes = [
             path:"login", component:LoginComponent, canActivate:[LoginGuard]
         },
         {
-            path:"signup", component:SignupComponent
+            path:"signup", component:SignupComponent, canActivate:[LoginGuard]
         },
         {
             path:"forgotPassword", component:ForgotPasswordComponent
