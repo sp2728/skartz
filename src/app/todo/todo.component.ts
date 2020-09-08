@@ -14,7 +14,6 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     this.navbarService.isNav.subscribe((value)=>{
-      console.log(value);
       this.isNav= value;
     });
   }

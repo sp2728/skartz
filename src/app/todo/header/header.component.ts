@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Data, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { LocalStorageService } from '../services/local-storage.service';
+import { AuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   username:any;
   user:any;
 
-  constructor(private dataService:DataService, private localStorageService:LocalStorageService, private router:Router) { }
+  constructor(private dataService:DataService,private socialAuthService:AuthService, private localStorageService:LocalStorageService, private router:Router) { }
 
   ngOnInit() {
     this.username = this.localStorageService.getUser();
@@ -41,6 +42,7 @@ export class HeaderComponent implements OnInit {
         console.log('Successfully logged out');
         this.router.navigate(['/login']);
       }
-    })
+    });
+    this.socialAuthService.signOut();
   }
 }

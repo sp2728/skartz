@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
     this.date = new Date().toLocaleDateString('en-CA');
     this.submitted = false;
     this.navbarService.show();
+
   }
 
   createForm() {

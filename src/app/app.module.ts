@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 import { TodoModule } from './todo/todo.module';
 import { RouterModule } from '@angular/router';
 import { HttpConfigInterceptorProvider } from './interceptor/httpconfig.interceptor';
-
-
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { provideConfig } from './interceptor/socialLoginConfig';
+ 
 
 @NgModule({
   declarations: [
@@ -21,10 +22,15 @@ import { HttpConfigInterceptorProvider } from './interceptor/httpconfig.intercep
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    SocialLoginModule,
     NgxStripeModule.forRoot('pk_test_51HCTVODRvwdogakBU0S2u8ZEnu3dYWNItOBCDyosIa3Yo07TPg2YfOYkKfMDRVOKEZgc0uqTBr3ct9nOX8yyF9wq00B7dMh6YN'),
   ],
   providers: [
-    HttpConfigInterceptorProvider
+    HttpConfigInterceptorProvider,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
   ],
   bootstrap: [AppComponent]
 })

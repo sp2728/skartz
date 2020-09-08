@@ -14,6 +14,10 @@ export class DataService {
     else {return false;}
   }
 
+  postSocialLogin( socialData:any ){
+    return this.http.post('postSocialLogin', socialData);
+  }
+
   postLogin(loginData:any){
     return this.http.post('login', loginData);
   }
@@ -77,4 +81,13 @@ export class DataService {
   stripePayment(token:any){
     return this.http.post('stripe/payment', token);
   }
+
+  razorPayOrder(orderData:any){
+    return this.http.post('razorPayOrder', orderData);
+  }
+
+  razorPayConfirmation(paymentData:any){
+    return this.http.post('/razorPayConfirmation', paymentData);
+  }
+
 }

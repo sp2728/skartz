@@ -12,14 +12,7 @@
     font-weight: bold;
     padding: 10px;
 }
-
-.date::before{
-    content: 'Date: ';
-    font-weight: bold;
-    padding: 10px;
-}
-
-
+  
 td, th{
     padding: 20px;
 }

@@ -5,7 +5,7 @@
 
   <!-- Todo List Form -->
   <form class="row mb-5" [formGroup]="todoForm" #fform="ngForm" (ngSubmit)="onSubmit()">
-    <div class="col-lg-6 form-group">
+    <div class="col-lg-4 form-group">
       <input class="form-control" formControlName="activity" type="text" placeholder="Enter the Activity" required>
       <span class="text-danger" *ngIf="todoForm.get('activity').hasError('required') && submitted">Activity is
         required</span>
@@ -42,16 +42,22 @@
         selected</span>
     </div>
     <div class="col-lg form-group">
+      <label>Start Time</label>
+      <input class="form-control" id="startTime" type="time">
+    </div>
+    <div class="col-lg form-group">
+      <label>End Time</label>
+      <input class="form-control" id="endTime" type="time">
+    </div>
+    <div class="col-lg form-group">
       <button class="btn btn-warning form-control border shadow">Add</button>
     </div>
+
+
   </form>
 
   <div class="mainContent">
   <div class="filter d-flex flex-row w-100 mb-5">
-
-    <div class="dateFilter ml-auto">
-      <input class="form-control date" type="date" value="{{date}}" (input)=dateFilter($event)>
-    </div>
 
     <div class="btn-group ml-auto">
     <a class="nav-link btn btn-primary" (click)="filter(1)">All </a>

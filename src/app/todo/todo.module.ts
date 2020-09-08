@@ -44,7 +44,7 @@ import { DataService } from './services/data.service';
     ReactiveFormsModule,
     RouterModule,
     TodoRoutingModule,
-    NgxStripeModule.forRoot('pk_test_51HCTVODRvwdogakBU0S2u8ZEnu3dYWNItOBCDyosIa3Yo07TPg2YfOYkKfMDRVOKEZgc0uqTBr3ct9nOX8yyF9wq00B7dMh6YN'),
+    NgxStripeModule.forRoot('<stripe key>'),
   ],
   providers:[
     AuthGuard,
